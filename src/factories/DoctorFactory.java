@@ -1,4 +1,4 @@
 package factories;
 
-public class DoctorFactory {
+public class DoctorFactory implements AbstractFactory{
 }
