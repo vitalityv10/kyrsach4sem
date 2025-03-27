@@ -1,4 +1,4 @@
-package core;
+package entities;
 
 public class Appointment {
     private String appointmentId,patientId, doctorId,
@@ -9,5 +9,8 @@ public class Appointment {
         this.patientId = patientId;
         this.doctorId = doctorId;
         this.date = date;
+    }
+
+    public Appointment(){
     }
 }

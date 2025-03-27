@@ -1,4 +1,4 @@
-package core.Persons;
+package entities.Persons;
 
 public abstract class Human {
     protected String ID, firstName,
@@ -11,5 +11,27 @@ public abstract class Human {
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.sex = sex;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public Sex getSex() {
+        return sex;
+    }
+
+    public Human() {
+    }
+    public String getID(){
+        return ID;
     }
 }

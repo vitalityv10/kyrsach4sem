@@ -1,5 +1,7 @@
 package UI.menu;
 
+import services.AdminService;
+
 import java.util.Scanner;
 
 public class AdminMenu implements Menu {
@@ -7,14 +9,17 @@ public class AdminMenu implements Menu {
     public void showMenu() {
         System.out.println("=== Адміністраторське меню ===");
         System.out.println("1. Додати лікаря");
-        System.out.println("2. Видалити лікаря");
-        System.out.println("3. Переглянути всі записи на прийом");
-        System.out.println("4. Керування пацієнтами");
-        System.out.println("5. Вихід");
+        System.out.println("2. Додати пацієнта");
+        System.out.println("3. Видалити лікаря");
+        System.out.println("4. Переглянути всі записи на прийом");
+        System.out.println("5. Керування пацієнтами"); // 6 керування лікарями
+        System.out.println("6. Вихід");
+        // курити бамбук
     }
 
     @Override
     public void handleMenu() {
+        AdminService adminService = new AdminService();
         Scanner sc = new Scanner(System.in);
         int choice;
         do {
@@ -22,15 +27,17 @@ public class AdminMenu implements Menu {
             System.out.println("Виберіть опцію: ");
             choice = sc.nextInt();
             switch (choice){
-                case 1 -> System.out.println("Додавання лікаря...");
-                case 2 -> System.out.println("Видалення лікаря...");
-                case 3 -> System.out.println("Список записів на прийом...");
-                case 4 -> System.out.println("Керування пацієнтами...");
-                case 5 -> System.out.println("Вихід...");
+                case 1 -> adminService.addDoctor();
+                case 2 -> adminService.addPatient();
+                case 3 -> adminService.removeDoctor();
+                case 4 -> adminService.viewALlAppointments();
+                case 5 ->adminService.managePatients();
+                case 6 -> System.out.println("6. Вихід");
                 default -> System.out.println("Невірний вибір, спробуйте ще раз.");
             }
-        } while (choice != 5);
+        } while (choice != 6);
     }
+
 }
 
 

@@ -1,4 +1,7 @@
 package factories;
 
-public interface AbstractFactory {
+
+
+public interface AbstractFactory<T> {
+   T create();
 }

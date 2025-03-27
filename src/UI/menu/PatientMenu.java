@@ -6,7 +6,7 @@ public class PatientMenu implements Menu {
     @Override
     public void showMenu() {
         System.out.println("=== Меню пацієнта ===");
-        System.out.println("1. Записатися на прийом");
+        System.out.println("1. Записатися на прийом"); // зареєструватися
         System.out.println("2. Скасувати запис");
         System.out.println("3. Переглянути історію хвороби");
         System.out.println("4. Оновити профіль");
