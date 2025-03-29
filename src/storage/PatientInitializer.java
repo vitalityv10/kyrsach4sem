@@ -13,11 +13,21 @@ public class PatientInitializer {
         List<Patient> patients = new ArrayList<>();
 
         for (int i = 0; i < 10; i++) patients.add(patientFactory.create());
-        patients.add(patientFactory.create( "Іван", "Іванов", "380671234567", Sex.MALE, null));
-        patients.add(patientFactory.create("Олександр", "Петренко", "380671234568", Sex.MALE, null));
-        patients.add(patientFactory.create("Марія", "Шевченко", "380671234569", Sex.FEMALE, null));
-        patients.add(patientFactory.create( "Юлія", "Ковальчук", "380671234570", Sex.FEMALE,null));
-        patients.add(patientFactory.create("Дмитро", "Романюк", "380671234571", Sex.MALE, new MedicalRecord("MR15", "P15", "Застуда", "Антибіотики", "D15")));
+        patients.add(patientFactory.create("Іван", "Іванов", "380671234567", Sex.MALE,
+                new MedicalRecord("MR1", "P11", "Грип", "Постільний режим", "D11")));
+
+        patients.add(patientFactory.create("Олександр", "Петренко", "380671234568", Sex.MALE,
+                new MedicalRecord("R12", "P12", "Отит", "Антибіотики", "D11")));
+
+        patients.add(patientFactory.create("Марія", "Шевченко", "380671234569", Sex.FEMALE,
+                new MedicalRecord("R13", "P13", "Алергія", "Антигістамінні", "D11")));
+
+        patients.add(patientFactory.create("Юлія", "Ковальчук", "380671234570", Sex.FEMALE,
+                new MedicalRecord("R14", "P14", "Мігрень", "Знеболювальне", "D11")));
+
+        patients.add(patientFactory.create("Дмитро", "Романюк", "380671234571", Sex.MALE,
+                new MedicalRecord("R15", "P15", "Бронхіт", "Муколітики", "D11")));
+
         return patients;
     }
 }

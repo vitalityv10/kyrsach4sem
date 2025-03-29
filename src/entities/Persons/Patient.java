@@ -14,6 +14,10 @@ public class Patient extends Human {
 
     }
 
+    public MedicalRecord getMedicalRecord() {
+        return medicalRecord;
+    }
+
     @Override
     public String toString() {
         return "Patient{" +

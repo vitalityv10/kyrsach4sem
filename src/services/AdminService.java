@@ -7,15 +7,13 @@ import factories.MedicalRecordFactory;
 import factories.PatientFactory;
 import storage.DoctorRepository;
 import storage.PatientRepository;
-import strategies.DoctorsBySpecialization;
-import strategies.DoctorsSelection;
+import strategies.DoctorRemover;
+import strategies.PatientRemover;
+import strategies.SelectSpecialization;
 
-import java.util.List;
 import java.util.Scanner;
 
 import static entities.Persons.PersonalInfo.getPersonalInfo;
-import static entities.Persons.Specialization.printSpecializations;
-import static strategies.SelectSpecialization.getSelectedSpecialization;
 
 public class AdminService implements AdminUI {
     @Override
@@ -65,30 +63,54 @@ public class AdminService implements AdminUI {
 
     @Override
     public void removeDoctor() {
-//        Scanner sc = new Scanner(System.in);
-//        System.out.println("Виберіть як ви хочете видалити лікаря, за спеціальністю чи по імені");
-//        int choice = sc.nextInt();
-//        switch (choice){
-//            case 1 -> removeBySpecialization();
-//            case 2 -> removeByName();
-//        }
+        DoctorRemover doctorRemover = new DoctorRemover();
+        Scanner sc = new Scanner(System.in);
 
-        Specialization selectedSpec = getSelectedSpecialization();
-        if (selectedSpec == null) return;
+        while (true) {
+            System.out.println("Виберіть, як ви хочете видалити лікаря: \n1. За спеціальністю \n2. За ім’ям та прізвищем \n3. Вийти");
 
-        List<Doctor> doctorsBySpec = DoctorsBySpecialization.getDoctorsBySpecialization(selectedSpec);
-        if (doctorsBySpec.isEmpty()) {
-            System.out.println("Лікарів з такою спеціалізацією не знайдено.");
-            return;
+            if (!sc.hasNextInt()) {
+                System.out.println("Некоректне введення! Введіть число.");
+                sc.next();
+                continue;
+            }
+
+            int choice = sc.nextInt();
+            sc.nextLine();
+
+            switch (choice) {
+                case 1 -> {
+                    Specialization specialization = SelectSpecialization.getSelectedSpecialization();
+                    if (specialization!= null) {
+                        doctorRemover.removeBySpecialization(specialization);
+                    }
+                }
+                case 2 -> {
+                    System.out.print("Введіть ім'я лікаря: ");
+                    String firstName = sc.nextLine().trim();
+                    System.out.print("Введіть прізвище лікаря: ");
+                    String lastName = sc.nextLine().trim();
+                    doctorRemover.removeByName(firstName, lastName);
+                }
+                case 3 -> {
+                    System.out.println("Вихід.");
+                    return;
+                }
+                default -> System.out.println("Некоректний вибір! Спробуйте ще раз.");
+            }
         }
-
-        Doctor doctorToRemove = DoctorsSelection.getDoctorSelection(doctorsBySpec);
-        if (doctorToRemove == null) return;
-
-        DoctorRepository.getInstance().getAllDoctors().remove(doctorToRemove);
-        System.out.println("Лікар " + doctorToRemove.getFirstName() + " " + doctorToRemove.getLastName() + " видалений.");
     }
 
+    @Override
+    public void removePatient() {
+        PatientRemover patientRemover = new PatientRemover();
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Введіть ім'я пацієнта: ");
+        String firstName = sc.nextLine().trim();
+        System.out.print("Введіть прізвище пацієнта: ");
+        String lastName = sc.nextLine().trim();
+        patientRemover.removeByName(firstName, lastName);
+    }
 
 
     @Override

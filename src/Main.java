@@ -18,11 +18,11 @@ public class Main {
         ProxyMenu proxyMenu = new ProxyMenu(role);
         proxyMenu.handleMenu();
 
-
         System.out.println("Список лікарів у системі:");
         for (Doctor doctor : doctorRepository.getAllDoctors())  System.out.println(doctor);
         System.out.println("Список лікарів у системі:");
         for(Patient patient : patientRepository.getAllPatients()) System.out.println(patient);
+        scanner.close();
 //
 //        // Отримання лікаря за ID
 //        String searchId = "D5";

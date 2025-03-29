@@ -13,7 +13,26 @@ public class MedicalRecord {
     }
 
     public MedicalRecord() {
+    }
 
+    public String getRecordId() {
+        return recordId;
+    }
+
+    public String getPatientId() {
+        return patientId;
+    }
+
+    public String getDiagnosis() {
+        return diagnosis;
+    }
+
+    public String getTreatment() {
+        return treatment;
+    }
+
+    public String getDoctorId() {
+        return doctorId;
     }
 
     @Override

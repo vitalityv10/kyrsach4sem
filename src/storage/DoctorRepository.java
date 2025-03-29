@@ -18,7 +18,7 @@ public class DoctorRepository {
     }
 
     public List<Doctor> getAllDoctors() {
-        return new ArrayList<>(doctors);
+        return doctors;
     }
     public void addDoctor(Doctor doctor) {
         doctors.add(doctor);

@@ -11,9 +11,10 @@ public class AdminMenu implements Menu {
         System.out.println("1. Додати лікаря");
         System.out.println("2. Додати пацієнта");
         System.out.println("3. Видалити лікаря");
-        System.out.println("4. Переглянути всі записи на прийом");
-        System.out.println("5. Керування пацієнтами"); // 6 керування лікарями
-        System.out.println("6. Вихід");
+        System.out.println("4. Видалити пацієнта");
+        System.out.println("5. Переглянути всі записи на прийом");
+        System.out.println("6. Керування пацієнтами"); // 6 керування лікарями
+        System.out.println("7. Вихід");
         // курити бамбук
     }
 
@@ -30,12 +31,13 @@ public class AdminMenu implements Menu {
                 case 1 -> adminService.addDoctor();
                 case 2 -> adminService.addPatient();
                 case 3 -> adminService.removeDoctor();
-                case 4 -> adminService.viewALlAppointments();
-                case 5 ->adminService.managePatients();
-                case 6 -> System.out.println("6. Вихід");
+                case 4 -> adminService.removePatient();
+                case 5 -> adminService.viewALlAppointments();
+                case 6 -> adminService.managePatients();
+                case 7 -> System.out.println("6. Вихід");
                 default -> System.out.println("Невірний вибір, спробуйте ще раз.");
             }
-        } while (choice != 6);
+        } while (choice != 7);
     }
 
 }

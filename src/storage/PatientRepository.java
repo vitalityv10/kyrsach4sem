@@ -16,7 +16,7 @@ public class PatientRepository {
     }
 
     public List<Patient> getAllPatients() {
-        return new ArrayList<>(patients);
+        return patients;
     }
 
     public static PatientRepository getInstance(){
