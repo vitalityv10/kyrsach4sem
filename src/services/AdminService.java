@@ -1,21 +1,24 @@
 package services;
-import UI.AdminUI;
+import UI.AdminActions;
+import entities.Appointment;
 import entities.MedicalRecord;
 import entities.Persons.*;
 import factories.DoctorFactory;
 import factories.MedicalRecordFactory;
 import factories.PatientFactory;
+import storage.AppointmentRepository;
 import storage.DoctorRepository;
 import storage.PatientRepository;
 import strategies.DoctorRemover;
 import strategies.PatientRemover;
 import strategies.SelectSpecialization;
 
+import java.util.List;
 import java.util.Scanner;
 
 import static entities.Persons.PersonalInfo.getPersonalInfo;
 
-public class AdminService implements AdminUI {
+public class AdminService implements AdminActions {
     @Override
     public void addDoctor() {
         Scanner scanner = new Scanner(System.in);
@@ -115,12 +118,14 @@ public class AdminService implements AdminUI {
 
     @Override
     public void viewALlAppointments() {
-
+        List<Appointment> all = AppointmentRepository.getInstance().getAllAppointments();
+        if (all.isEmpty()) System.out.println("🔎 Записів ще немає.");
+         else all.forEach(System.out::println);
     }
+    @Override
+    public void managePatients() {PatientRepository.getInstance().getAllPatients().forEach(System.out::println);}
 
     @Override
-    public void managePatients() {
-
-    }
+    public void allDoctors() {DoctorRepository.getInstance().getAllDoctors().forEach(System.out::println);}
 }
 

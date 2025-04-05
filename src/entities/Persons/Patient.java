@@ -10,14 +10,8 @@ public class Patient extends Human {
         this.medicalRecord = medicalRecord;
     }
 
-    public Patient() {
-
-    }
-
-    public MedicalRecord getMedicalRecord() {
-        return medicalRecord;
-    }
-
+    public Patient() {}
+    public MedicalRecord getMedicalRecord() {return medicalRecord;}
     @Override
     public String toString() {
         return "Patient{" +

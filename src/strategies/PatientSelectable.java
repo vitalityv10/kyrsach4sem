@@ -5,7 +5,7 @@ import entities.Persons.Patient;
 import java.util.List;
 import java.util.Scanner;
 
-public class PatientSelection implements Selection <Patient>{
+public class PatientSelectable implements Selectable<Patient> {
     @Override
     public Patient getSelection(List<Patient> patients) {
         Scanner scanner = new Scanner(System.in);

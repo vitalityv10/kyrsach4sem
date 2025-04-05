@@ -11,6 +11,18 @@ public class Appointment {
         this.date = date;
     }
 
-    public Appointment(){
+    public Appointment(){}
+
+    public String getDoctorId() {return doctorId;}
+    @Override
+    public String toString() {
+        return "Appointment{" +
+                "appointmentId='" + appointmentId + '\'' +
+                ", patientId='" + patientId + '\'' +
+                ", doctorId='" + doctorId + '\'' +
+                ", date='" + date + '\'' +
+                '}';
     }
-}
+   }
+
+

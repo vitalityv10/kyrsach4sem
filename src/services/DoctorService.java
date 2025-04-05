@@ -1,10 +1,10 @@
 package services;
 
-import UI.DoctorUI;
+import UI.DoctorActions;
 
 import java.util.Scanner;
 
-public class DoctorService implements DoctorUI {
+public class DoctorService implements DoctorActions {
     @Override
     public void viewSchedule() {
 

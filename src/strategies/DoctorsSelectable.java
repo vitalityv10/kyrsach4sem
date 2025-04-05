@@ -5,7 +5,7 @@ import entities.Persons.Doctor;
 import java.util.List;
 import java.util.Scanner;
 
-public class DoctorsSelection implements Selection<Doctor>{
+public class DoctorsSelectable implements Selectable<Doctor> {
 
     public Doctor getSelection(List<Doctor> doctors) {
         Scanner scanner = new Scanner(System.in);

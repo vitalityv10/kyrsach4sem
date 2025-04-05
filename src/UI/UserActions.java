@@ -1,6 +1,6 @@
 package UI;
 
-public interface UserUI {
+public interface UserActions {
     void viewAppointment();
     void updateProfile();
 }

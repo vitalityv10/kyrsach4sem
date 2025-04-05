@@ -15,20 +15,12 @@ public class PatientRepository {
         this.patients = PatientInitializer.patientInitializer(patientFactory);
     }
 
-    public List<Patient> getAllPatients() {
-        return patients;
-    }
-
+    public List<Patient> getAllPatients() {return patients;}
     public static PatientRepository getInstance(){
-        if (instance == null) {
-            instance = new PatientRepository();
-        }
+        if (instance == null) instance = new PatientRepository();
         return instance;
     }
-    public void addPatient(Patient patient) {
-        patients.add(patient);
-    }
-
+    public void addPatient(Patient patient) {patients.add(patient);}
     public Patient getPatientById(String id) {
         return patients.stream().filter(p -> p.getID().equals(id)).findFirst().orElse(null);
     }

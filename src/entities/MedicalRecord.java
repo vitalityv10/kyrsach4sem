@@ -1,5 +1,9 @@
 package entities;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class MedicalRecord {
     private String recordId, patientId, diagnosis,
             treatment, doctorId;
@@ -12,28 +16,12 @@ public class MedicalRecord {
         this.doctorId = doctorId;
     }
 
-    public MedicalRecord() {
-    }
+    public MedicalRecord() {}
 
-    public String getRecordId() {
-        return recordId;
-    }
-
-    public String getPatientId() {
-        return patientId;
-    }
-
-    public String getDiagnosis() {
-        return diagnosis;
-    }
-
-    public String getTreatment() {
-        return treatment;
-    }
-
-    public String getDoctorId() {
-        return doctorId;
-    }
+    public String getDiagnosis() {return diagnosis;}
+    public String getDoctorId() {return doctorId;}
+    public String getPatientId(){return patientId;}
+    public void setDoctorId(String doctorId) {this.doctorId = doctorId;}
 
     @Override
     public String toString() {
@@ -42,7 +30,7 @@ public class MedicalRecord {
                 ", patientId='" + patientId + '\'' +
                 ", diagnosis='" + diagnosis + '\'' +
                 ", treatment='" + treatment + '\'' +
-                ", doctorId='" + doctorId + '\'' +
+                ", doctorIds=" +  doctorId+
                 '}';
     }
 }

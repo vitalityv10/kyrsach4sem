@@ -1,10 +1,7 @@
 package services;
 
 import entities.MedicalRecord;
-import entities.Persons.Doctor;
 import entities.Persons.Patient;
-import storage.DoctorRepository;
-import storage.PatientRepository;
 import strategies.PatientsByDoctor;
 
 import java.io.FileWriter;
@@ -12,7 +9,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Comparator;
-import java.util.stream.Collectors;
 
 public class ReportService {
     PatientsByDoctor patientsByDoctor;
@@ -69,9 +65,9 @@ public class ReportService {
             System.out.println("Помилка запису файлу: " + e.getMessage());
         }
     }
-    public List<Patient> sortPatientsByLastName(String doctorName) {
-        List<Patient> patients = patientsByDoctor.getPatientsByDoctor(doctorName);
-        patients.sort(Comparator.comparing(Patient::getLastName));
-        return patients;
-    }
+//    public List<Patient> sortPatientsByLastName(String doctorName) {
+//        List<Patient> patients = patientsByDoctor.getPatientsByDoctor(doctorName);
+//        patients.sort(Comparator.comparing(Patient::getLastName));
+//        return patients;
+//    }
 }

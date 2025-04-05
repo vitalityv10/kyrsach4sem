@@ -21,18 +21,13 @@ public class PatientFactory implements AbstractFactory<Patient> {
         Sex sex = RANDOM.nextBoolean() ? Sex.MALE : Sex.FEMALE;
 
         MedicalRecord medicalRecord = new MedicalRecordFactory().create(id);
-
-
         return new Patient(id, firstName, lastName, phoneNumber, sex, medicalRecord);
     }
-
 
     public Patient create(String firstName, String lastName, String phoneNumber, Sex sex, MedicalRecord medicalRecord) {
         String patientId = "P" + (patientIdCounter++);
 
-        if (medicalRecord == null)
-            medicalRecord = new MedicalRecordFactory().create(patientId);
-
+        if (medicalRecord == null) {medicalRecord = new MedicalRecordFactory().create(patientId);}
         return new Patient(patientId, firstName, lastName, phoneNumber, sex, medicalRecord);
     }
 }

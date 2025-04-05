@@ -2,6 +2,6 @@ package strategies;
 
 import java.util.List;
 
-public interface Selection <T>{
+public interface Selectable<T>{
     T getSelection(List<T> t);
 }

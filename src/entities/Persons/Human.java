@@ -1,8 +1,7 @@
 package entities.Persons;
 
 public abstract class Human {
-    protected String ID, firstName,
-    lastName, phoneNumber;
+    protected String ID, firstName, lastName, phoneNumber;
     protected Sex sex;
 
     public Human(String ID, String firstName, String lastName, String phoneNumber, Sex sex) {
@@ -16,21 +15,16 @@ public abstract class Human {
     public String getFirstName() {
         return firstName;
     }
-
     public String getLastName() {
         return lastName;
     }
-
     public String getPhoneNumber() {
         return phoneNumber;
     }
-
     public Sex getSex() {
         return sex;
     }
-
-    public Human() {
-    }
+    public Human() {}
     public String getID(){
         return ID;
     }

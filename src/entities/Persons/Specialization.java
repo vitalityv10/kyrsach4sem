@@ -1,18 +1,11 @@
 package entities.Persons;
 
-import java.util.Scanner;
-
 public enum Specialization {
-    CARDIOLOGIST,
-    NEUROLOGIST,
-    DERMATOLOGIST,
-    ORTHOPEDIST,
-    OPHTHALMOLOGIST,
-    OTORHINOLARYNGOLOGIST,
-    PEDIATRICIAN,
-    SURGEON,
-    PSYCHIATRIST,
-    ENDOCRINOLOGIST;
+    CARDIOLOGIST, NEUROLOGIST,
+    DERMATOLOGIST, ORTHOPEDIST,
+    OPHTHALMOLOGIST, OTORHINOLARYNGOLOGIST,
+    PEDIATRICIAN, SURGEON,
+    PSYCHIATRIST, ENDOCRINOLOGIST;
     public static void printSpecializations() {
         Specialization[] specializations = Specialization.values();
         for (int i = 0; i < specializations.length; i++) {
