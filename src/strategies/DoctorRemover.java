@@ -1,12 +1,12 @@
 package strategies;
 
 import entities.Persons.Doctor;
-import entities.Persons.Specialization;
+import entities.Persons.creation.Specialization;
 import storage.DoctorRepository;
 
 import java.util.List;
-//доробити через патерн
 public class DoctorRemover implements SpecializationRemovable<Doctor> {
+   private final SelectionContext<Doctor> context = new SelectionContext<>();
     private final DoctorRepository doctorRepository = DoctorRepository.getInstance();
     @Override
     public void removeBySpecialization(Specialization specialization) {
@@ -17,7 +17,6 @@ public class DoctorRemover implements SpecializationRemovable<Doctor> {
             System.out.println("Лікарів з такою спеціалізацією не знайдено."); return;
         }
 
-        SelectionContext<Doctor> context = new SelectionContext<>();
         context.setSelectionStrategy(new DoctorsSelectable());
 
         Doctor doctorToRemove = context.executeSelection(doctors);
@@ -37,7 +36,6 @@ public class DoctorRemover implements SpecializationRemovable<Doctor> {
             System.out.println("Лікаря з таким ім'ям не знайдено.");
             return;
         }
-        SelectionContext<Doctor> context = new SelectionContext<>();
         context.setSelectionStrategy(new DoctorsSelectable());
 
         Doctor doctorToRemove = context.executeSelection(doctors);

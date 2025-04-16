@@ -2,8 +2,7 @@ package storage;
 
 import entities.Appointment;
 import factories.AppointmentFactory;
-import factories.DoctorFactory;
-import observers.AppointmentObserver;
+import observer.ObserverManager;
 import services.AppointmentService;
 
 import java.util.ArrayList;
@@ -19,7 +18,7 @@ public class AppointmentRepository {
         if (instance == null) {
             instance = new AppointmentRepository();
             AppointmentFactory factory = new AppointmentFactory();
-            AppointmentService service = new AppointmentService(instance);
+            AppointmentService service = new AppointmentService(instance, new ObserverManager());
             instance.appointments = AppointmentInitializer.appointmentInitializer(factory, service);
         }
         return instance;

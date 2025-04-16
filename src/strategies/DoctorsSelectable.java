@@ -15,7 +15,6 @@ public class DoctorsSelectable implements Selectable<Doctor> {
             Doctor doctor = doctors.get(i);
             System.out.println((i + 1) + ". " + doctor.getFirstName() + " " + doctor.getLastName());
         }
-
         int doctorIndex = scanner.nextInt();
         if (doctorIndex < 1 || doctorIndex > doctors.size()) {
             System.out.println("Некоректний вибір лікаря!");

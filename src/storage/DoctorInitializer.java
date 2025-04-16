@@ -2,8 +2,8 @@ package storage;
 
 
 import entities.Persons.Doctor;
-import entities.Persons.Sex;
-import entities.Persons.Specialization;
+import entities.Persons.creation.Sex;
+import entities.Persons.creation.Specialization;
 import factories.DoctorFactory;
 
 import java.util.ArrayList;

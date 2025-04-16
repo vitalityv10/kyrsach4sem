@@ -30,11 +30,6 @@ public class DoctorService implements DoctorActions {
     }
 
     @Override
-    public void viewAppointment() {
-
-    }
-
-    @Override
     public void updateProfile() {
 
     }

@@ -21,16 +21,7 @@ public class ProxyMenu implements Menu {
     }
 
     @Override
-    public void showMenu() {
-        if (menu != null) {
-            menu.showMenu();
-        }
-    }
-
+    public void showMenu() {if (menu != null) menu.showMenu();}
     @Override
-    public void handleMenu() {
-        if (menu != null) {
-            menu.handleMenu();
-        }
-    }
+    public void handleMenu() {if (menu != null) menu.handleMenu();}
 }

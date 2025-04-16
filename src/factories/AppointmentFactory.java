@@ -1,5 +1,4 @@
 package factories;
-
 import entities.Appointment;
 
 public class AppointmentFactory implements AbstractFactory<Appointment>{

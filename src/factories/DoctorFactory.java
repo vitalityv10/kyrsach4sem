@@ -1,8 +1,8 @@
 package factories;
 
 import entities.Persons.Doctor;
-import entities.Persons.Sex;
-import entities.Persons.Specialization;
+import entities.Persons.creation.Sex;
+import entities.Persons.creation.Specialization;
 
 import java.util.Random;
 
@@ -24,9 +24,7 @@ public class DoctorFactory implements AbstractFactory<Doctor>{
 
         return new Doctor(id, firstName, lastName, phoneNumber, sex, specialization);
     }
-
     public Doctor create(String firstName, String lastName, String phoneNumber, Sex sex, Specialization specialization) {
         return new Doctor("D" + (doctorIdCounter++), firstName, lastName, phoneNumber, sex, specialization);
     }
-
 }

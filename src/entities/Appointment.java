@@ -13,6 +13,9 @@ public class Appointment {
 
     public Appointment(){}
 
+    public String getAppointmentId() {return appointmentId;}
+    public String getPatientId() {return patientId;}
+    public String getDate() {return date;}
     public String getDoctorId() {return doctorId;}
     @Override
     public String toString() {

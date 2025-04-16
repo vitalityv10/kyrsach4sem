@@ -1,5 +1,7 @@
 package entities.Persons;
 
+import entities.Persons.creation.Sex;
+
 public abstract class Human {
     protected String ID, firstName, lastName, phoneNumber;
     protected Sex sex;
@@ -28,4 +30,8 @@ public abstract class Human {
     public String getID(){
         return ID;
     }
+
+    public void setID(String ID) {this.ID = ID;}
+    public void setLastName(String lastName) {this.lastName = lastName;}
+    public void setPhoneNumber(String phoneNumber) {this.phoneNumber = phoneNumber;}
 }

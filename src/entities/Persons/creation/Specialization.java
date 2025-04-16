@@ -1,4 +1,4 @@
-package entities.Persons;
+package entities.Persons.creation;
 
 public enum Specialization {
     CARDIOLOGIST, NEUROLOGIST,

@@ -1,9 +1,4 @@
 package entities;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class MedicalRecord {
     private String recordId, patientId, diagnosis,
             treatment, doctorId;
@@ -16,11 +11,9 @@ public class MedicalRecord {
         this.doctorId = doctorId;
     }
 
-    public MedicalRecord() {}
-
     public String getDiagnosis() {return diagnosis;}
     public String getDoctorId() {return doctorId;}
-    public String getPatientId(){return patientId;}
+    public String getTreatment(){return treatment;}
     public void setDoctorId(String doctorId) {this.doctorId = doctorId;}
 
     @Override

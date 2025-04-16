@@ -13,13 +13,11 @@ public class PatientSelectable implements Selectable<Patient> {
         for (int i = 0; i < patients.size(); i++) {
             System.out.println((i + 1) + ". " + patients.get(i).getFirstName() + " " + patients.get(i).getLastName());
         }
-
         int index = scanner.nextInt();
         if (index < 1 || index > patients.size()) {
             System.out.println("Некоректний вибір!");
             return null;
         }
-
         return patients.get(index - 1);
     }
 }

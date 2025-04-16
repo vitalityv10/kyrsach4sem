@@ -1,15 +1,11 @@
-import entities.Appointment;
-import entities.MedicalRecord;
-import entities.Persons.Doctor;
-import entities.Persons.Human;
-import entities.Persons.Patient;
-import factories.AppointmentFactory;
 import proxies.ProxyMenu;
-import services.AppointmentService;
-import storage.*;
-
+import storage.DoctorRepository;
+import storage.PatientRepository;
+import entities.Persons.Human;
 import java.util.List;
 import java.util.Scanner;
+
+import static UI.menu.Registration.registration;
 
 public class Main {
     public static void main(String[] args) {
@@ -22,8 +18,8 @@ public class Main {
                 .toList();
 
         System.out.println("╔══════════════════════════════════════════════╗");
-        System.out.println("║          АВТОРИЗАЦІЯ В СИСТЕМІ               ║");
-        System.out.println("║        МІС МІСЬКОЇ ПОЛІКЛІНІКИ v1.0          ║");
+        System.out.println("║           РЕЄСТРАЦІЯ В СИСТЕМІ               ║");
+        System.out.println("║           МІСЬКОЇ ПОЛІКЛІНІКИ  v1.0          ║");
         System.out.println("╠══════════════════════════════════════════════╣");
         System.out.println("║   Оберіть свою роль для подальших дій:       ║");
         System.out.println("║                                              ║");
@@ -36,38 +32,40 @@ public class Main {
         System.out.println("╚══════════════════════════════════════════════╝");
         System.out.print  ("Ваш вибір ➤ ");
 
-
         String role = scanner.nextLine().toLowerCase();
 
         if (validateRole(role)) {
+            if (role.equals("patient")) {
+                System.out.println("1. Авторизація");
+                System.out.println("2. Зареєструватися");
+                System.out.print("Ваш вибір: ");
+                int choice = Integer.parseInt(scanner.nextLine());
+                if (choice != 1) {
+                    registration();
+                    return;
+                }
+            }
             System.out.print("Введіть ID (логін): ");
             String userId = scanner.nextLine();
             System.out.print("Введіть пароль: ");
             String password = scanner.nextLine();
 
-            // Перевірка пароля для лікарів та пацієнтів
-            if (role.equals("doctor") || role.equals("patient")) {
-                if (patID.contains(userId) || docID.contains(userId)&&password.equals("password123")) {  // Однотипний пароль для лікарів та пацієнтів
-                    ProxyMenu proxyMenu = new ProxyMenu(role);
-                    proxyMenu.handleMenu();
-                } else {
-                    System.out.println("Невірний пароль!");
-                }
-            }
-            // Перевірка пароля для адміністратора
-            else if (role.equals("admin") && password.equals("admin123")) {
+            if ((role.equals("patient") || role.equals("doctor")) &&
+                    ((patID.contains(userId) || docID.contains(userId)) && password.equals("password123"))) {
+
                 ProxyMenu proxyMenu = new ProxyMenu(role);
                 proxyMenu.handleMenu();
-            } else {
-                System.out.println("Невірний пароль!");
-            }
-        } else {
-            System.out.println("Невідома роль!");
-        }
+
+            } else if (role.equals("admin")) {
+                if (password.equals("admin123")) {
+                    ProxyMenu proxyMenu = new ProxyMenu(role);
+                    proxyMenu.handleMenu();
+                } else {System.out.println("Невірний пароль!");}
+            } else {System.out.println("Невірний пароль!");}
+        } else {System.out.println("Невідома роль!");}
     }
 
     private static boolean validateRole(String role) {
         return role.equals("admin") || role.equals("doctor") || role.equals("patient");
     }
-
-    }
+}

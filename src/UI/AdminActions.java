@@ -7,4 +7,5 @@ public interface AdminActions {
     void viewALlAppointments();
     void managePatients();
     void allDoctors();
+    void generateReport();
 }

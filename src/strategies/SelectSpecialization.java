@@ -1,6 +1,6 @@
 package strategies;
 
-import entities.Persons.Specialization;
+import entities.Persons.creation.Specialization;
 
 import java.util.Scanner;
 
@@ -17,7 +17,6 @@ public class SelectSpecialization {
             System.out.println("Некоректний вибір спеціалізації!");
             return null;
         }
-
         return specializations[specIndex - 1];
     }
 }

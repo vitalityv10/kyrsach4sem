@@ -1,0 +1,81 @@
+@startuml
+left to right direction
+
+' Стилі (з попереднього коду)
+skinparam usecaseFontSize 16
+skinparam packageFontSize 20
+skinparam packageFontColor #0000FF
+skinparam actorFontSize 18
+skinparam arrowFontSize 16
+skinparam actorStyle awesome
+skinparam packageStyle rectangle
+skinparam usecaseFontColor Black
+
+' Актори
+actor "Користувач" as User
+actor "Система" as System
+actor "Служба підтримки" as Support
+
+' Успадкування
+Support -|> User : <<generalization>>
+
+' Основний пакет варіантів використання
+package "Функціонал системи" {
+  ' Варіанти використання Користувача
+  usecase UC_Login as "Авторизуватися\nв системі"
+  usecase UC_Track as "Відстежити\nстатус переказу"
+  usecase UC_History as "Переглянути\nісторію переказів"
+
+  ' Варіанти використання Служби підтримки
+  usecase UC_ViewLogs as "Переглянути\nлоги системи"
+  usecase UC_ResolveIssue as "Вирішити проблему\nкористувача"
+
+  ' Включені Use Cases (пов'язані з Відстежити статус)
+  usecase UC_Authenticate as "Аутентифікація\nкористувача"
+  usecase UC_CheckInternet as "Перевірити\nпідключення"
+  usecase UC_GetList as "Отримати\nсписок переказів"
+  usecase UC_GetDetails as "Завантажити\nдеталі"
+  usecase UC_GetReceipt as "Завантажити\nквитанцію"
+
+  ' Розширюючі Use Cases (Альтернативні сценарії для Відстежити статус)
+  usecase EX_Status as "Статус не\nоновлено"
+  usecase EX_Server as "Сервер\nнедоступний"
+  usecase EX_NoInternet as "Немає\nпідключення"
+  usecase EX_Empty as "Історія\nпорожня"
+}
+
+' Зв'язки Актора Користувач
+User --> UC_Login
+User --> UC_Track
+User --> UC_History
+
+' Зв'язки Актора Система (бере участь)
+System --> UC_Login
+System --> UC_Track
+System --> UC_History
+
+' Зв'язки Актора Служба підтримки
+' UC_Track успадковано від User
+Support --> UC_ViewLogs
+Support --> UC_ResolveIssue
+
+' Зв'язки Include
+UC_Login ..> UC_Authenticate : <<include>>
+UC_Track ..> UC_CheckInternet : <<include>>
+UC_Track ..> UC_Authenticate : <<include>> ' Аутентифікація потрібна і для відстеження
+UC_Track ..> UC_GetList : <<include>>
+UC_History ..> UC_GetList : <<include>> ' Історія також використовує отримання списку
+UC_GetList ..> UC_Authenticate : <<include>> ' Для списку теж потрібна аутентифікація (якщо ще не пройшла)
+
+UC_Track ..> UC_GetDetails : <<include>>
+UC_Track ..> UC_GetReceipt : <<include>>
+
+UC_ResolveIssue ..> UC_ViewLogs : <<include>> ' Перегляд логів є частиною вирішення проблеми
+
+' Зв'язки Extend
+EX_Status ..> UC_Track : <<extend>>
+EX_Server ..> UC_Track : <<extend>>
+EX_NoInternet ..> UC_Track : <<extend>>
+EX_Empty ..> UC_Track : <<extend>>
+
+@enduml

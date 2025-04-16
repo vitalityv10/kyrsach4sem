@@ -1,6 +1,7 @@
 package entities.Persons;
 
 import entities.MedicalRecord;
+import entities.Persons.creation.Sex;
 
 public class Patient extends Human {
     MedicalRecord medicalRecord;

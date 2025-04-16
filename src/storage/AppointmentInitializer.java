@@ -1,10 +1,9 @@
 package storage;
 
 import entities.Appointment;
-import entities.MedicalRecord;
-import entities.Persons.Patient;
 import factories.AppointmentFactory;
-import observers.AppointmentObserver;
+import observer.AppointmentObserver;
+import observer.ObserverManager;
 import services.AppointmentService;
 
 import java.time.LocalDate;
@@ -17,8 +16,10 @@ public class AppointmentInitializer {
 
     public static List<Appointment> appointmentInitializer(AppointmentFactory appointmentFactory, AppointmentService service) {
         List<Appointment> appointments = new ArrayList<>();
+        ObserverManager observerManager = new ObserverManager();
+        if (observerManager.getObservers().isEmpty()) {observerManager.addObserver(new AppointmentObserver());}
+        observerManager.setEnabled(false);
 
-        if (service.getObservers().isEmpty()) {service.addObserver(new AppointmentObserver());}
         int numPatients = 15;
         int numDoctors = 15;
 
@@ -29,11 +30,13 @@ public class AppointmentInitializer {
 
             Appointment appointment = appointmentFactory.create(patientId, doctorId, date);
             if (service.createAppointment(appointment)) appointments.add(appointment);
+
             if (RANDOM.nextBoolean() && service.canAcceptMorePatients(doctorId)) {
                 Appointment secondAppointment = appointmentFactory.create(patientId, doctorId, getRandomDate());
                 if (service.createAppointment(secondAppointment)) appointments.add(secondAppointment);
             }
         }
+        observerManager.setEnabled(true);
 
         return appointments;
     }

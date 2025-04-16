@@ -1,4 +1,4 @@
-package observers;
+package observer;
 
 import entities.Appointment;
 

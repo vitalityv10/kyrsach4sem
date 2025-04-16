@@ -1,11 +1,8 @@
 package storage;
 
 import entities.Persons.Doctor;
-import entities.Persons.Sex;
-import entities.Persons.Specialization;
 import factories.DoctorFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DoctorRepository {
@@ -28,8 +25,5 @@ public class DoctorRepository {
             instance = new DoctorRepository();
         }
         return instance;
-    }
-    public Doctor getDoctorById(String id) {
-        return doctors.stream().filter(doc -> doc.getID().equals(id)).findFirst().orElseGet(null);
     }
 }

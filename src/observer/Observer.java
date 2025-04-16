@@ -1,7 +1,6 @@
-package observers;
+package observer;
 
 import entities.Appointment;
-
 public interface Observer {
     void update(Appointment patientCount);
 }
