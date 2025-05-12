@@ -10,11 +10,12 @@ public class MedicalRecord {
         this.treatment = treatment;
         this.doctorId = doctorId;
     }
-
+    public String getRecordId() {return recordId;}
     public String getDiagnosis() {return diagnosis;}
     public String getDoctorId() {return doctorId;}
     public String getTreatment(){return treatment;}
-    public void setDoctorId(String doctorId) {this.doctorId = doctorId;}
+    public void setDiagnosis(String diagnosis) {this.diagnosis = diagnosis;}
+    public void setTreatment(String treatment) {this.treatment = treatment;}
 
     @Override
     public String toString() {

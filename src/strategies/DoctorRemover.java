@@ -5,26 +5,27 @@ import entities.Persons.creation.Specialization;
 import storage.DoctorRepository;
 
 import java.util.List;
+
+import static strategies.DoctorsSelectable.getDoctorsBySpecialization;
+
 public class DoctorRemover implements SpecializationRemovable<Doctor> {
-   private final SelectionContext<Doctor> context = new SelectionContext<>();
+    private final SelectionContext<Doctor> context = new SelectionContext<>();
     private final DoctorRepository doctorRepository = DoctorRepository.getInstance();
+
     @Override
     public void removeBySpecialization(Specialization specialization) {
-        List<Doctor> doctors = doctorRepository.getAllDoctors().stream()
-                .filter(doctor -> doctor.getSpecialization() == specialization)
-                .toList();
+        List<Doctor> doctors = getDoctorsBySpecialization(specialization);
         if(doctors.isEmpty()) {
             System.out.println("Лікарів з такою спеціалізацією не знайдено."); return;
         }
 
         context.setSelectionStrategy(new DoctorsSelectable());
-
         Doctor doctorToRemove = context.executeSelection(doctors);
+
         if (doctorToRemove != null) {
             doctorRepository.getAllDoctors().remove(doctorToRemove);
             System.out.println("Лікар " + doctorToRemove.getFirstName() + " " + doctorToRemove.getLastName() + " видалений.");
         }
-
     }
 
     @Override
@@ -36,8 +37,8 @@ public class DoctorRemover implements SpecializationRemovable<Doctor> {
             System.out.println("Лікаря з таким ім'ям не знайдено.");
             return;
         }
-        context.setSelectionStrategy(new DoctorsSelectable());
 
+        context.setSelectionStrategy(new DoctorsSelectable());
         Doctor doctorToRemove = context.executeSelection(doctors);
 
         if (doctorToRemove != null) {
@@ -48,6 +49,5 @@ public class DoctorRemover implements SpecializationRemovable<Doctor> {
                 System.out.println("Помилка видалення лікаря.");
             }
         }
-
     }
 }

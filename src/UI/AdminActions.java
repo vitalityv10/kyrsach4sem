@@ -1,4 +1,5 @@
 package UI;
+
 public interface AdminActions {
     void addDoctor();
     void addPatient();

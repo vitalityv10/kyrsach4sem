@@ -2,14 +2,11 @@ package storage;
 
 import entities.Appointment;
 import factories.AppointmentFactory;
-import observer.AppointmentObserver;
-import observer.ObserverManager;
+import observer.*;
 import services.AppointmentService;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class AppointmentInitializer {
     private static final Random RANDOM = new Random();
@@ -40,9 +37,9 @@ public class AppointmentInitializer {
 
         return appointments;
     }
-     private static String getRandomDate() {
+     public static String getRandomDate() {
         LocalDate today = LocalDate.now();
-        LocalDate randomDate = today.plusDays(RANDOM.nextInt(30));
+        LocalDate randomDate = today.plusDays(RANDOM.nextInt(11));
         return randomDate.toString();
     }
 }

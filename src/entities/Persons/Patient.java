@@ -15,14 +15,10 @@ public class Patient extends Human {
     public MedicalRecord getMedicalRecord() {return medicalRecord;}
     @Override
     public String toString() {
-        return "Patient{" +
-                "medicalRecord=" + medicalRecord +
-                ", ID='" + ID + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", sex=" + sex +
-                '}';
+        return String.format("%-10s %-15s %-15s %-15s %-10s %-20s",
+                ID, firstName,
+                lastName, phoneNumber,
+                sex, (medicalRecord != null ? medicalRecord.getRecordId() : "Немає"));
     }
 
     public void setMedicalRecord(MedicalRecord medicalRecord) {

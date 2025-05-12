@@ -1,9 +1,10 @@
 package strategies;
 
 import entities.Persons.Doctor;
+import entities.Persons.creation.Specialization;
+import storage.DoctorRepository;
 
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class DoctorsSelectable implements Selectable<Doctor> {
 
@@ -22,5 +23,11 @@ public class DoctorsSelectable implements Selectable<Doctor> {
         }
 
         return doctors.get(doctorIndex - 1);
+    }
+
+    public static List<Doctor> getDoctorsBySpecialization(Specialization specialization) {
+        return DoctorRepository.getInstance().getAllDoctors().stream()
+                .filter(doctor -> doctor.getSpecialization() == specialization)
+                .toList();
     }
 }

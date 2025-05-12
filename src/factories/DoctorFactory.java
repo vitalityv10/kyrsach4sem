@@ -1,8 +1,7 @@
 package factories;
 
 import entities.Persons.Doctor;
-import entities.Persons.creation.Sex;
-import entities.Persons.creation.Specialization;
+import entities.Persons.creation.*;
 
 import java.util.Random;
 

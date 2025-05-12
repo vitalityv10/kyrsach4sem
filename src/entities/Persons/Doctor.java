@@ -1,7 +1,6 @@
 package entities.Persons;
 
-import entities.Persons.creation.Sex;
-import entities.Persons.creation.Specialization;
+import entities.Persons.creation.*;
 
 public class Doctor extends Human{
     Specialization specialization;
@@ -14,13 +13,10 @@ public class Doctor extends Human{
     }
     @Override
     public String toString() {
-        return "Лікар{" +
-                "ID='" + getID() + '\'' +
-                ", Ім'я='" + getFirstName() + '\'' +
-                ", Прізвище='" + getLastName() + '\'' +
-                ", Телефон='" + getPhoneNumber() + '\'' +
-                ", Стать=" + getSex() +
-                ", Спеціалізація=" + specialization +
-                '}';
+        return String.format("%-10s %-15s %-15s %-15s %-10s %-20s",
+                getID(), getFirstName(),
+                getLastName(), getPhoneNumber(),
+                getSex(), (specialization != null ? specialization.toString() : "Невідомо"));
     }
+
 }

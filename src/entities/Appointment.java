@@ -1,6 +1,6 @@
 package entities;
 
-public class Appointment {
+public class Appointment implements Cloneable {
     private String appointmentId,patientId, doctorId,
     date;
 
@@ -19,13 +19,22 @@ public class Appointment {
     public String getDoctorId() {return doctorId;}
     @Override
     public String toString() {
-        return "Appointment{" +
-                "appointmentId='" + appointmentId + '\'' +
-                ", patientId='" + patientId + '\'' +
-                ", doctorId='" + doctorId + '\'' +
-                ", date='" + date + '\'' +
-                '}';
+        return String.format("%-15s %-15s %-15s %-20s",
+                appointmentId, patientId,
+                doctorId, date);
     }
-   }
+
+
+    @Override
+    public Appointment clone() {
+        try {
+            Appointment clone = (Appointment) super.clone();
+            clone.patientId = this.patientId; clone.doctorId = this.doctorId;
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+    }
+}
 
 

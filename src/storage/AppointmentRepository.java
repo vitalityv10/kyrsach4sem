@@ -5,8 +5,7 @@ import factories.AppointmentFactory;
 import observer.ObserverManager;
 import services.AppointmentService;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class AppointmentRepository {
     private static AppointmentRepository instance;
@@ -27,9 +26,7 @@ public class AppointmentRepository {
     public List<Appointment> getAllAppointments() {return appointments != null ? appointments : new ArrayList<>();}
 
     public void addAppointment(Appointment appointment) {
-        if (appointments == null) {
-            appointments = new ArrayList<>();
-        }
+        if (appointments == null) {appointments = new ArrayList<>();}
         appointments.add(appointment);
     }
 }

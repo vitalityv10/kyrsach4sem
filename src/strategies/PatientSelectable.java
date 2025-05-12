@@ -2,8 +2,7 @@ package strategies;
 
 import entities.Persons.Patient;
 
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class PatientSelectable implements Selectable<Patient> {
     @Override

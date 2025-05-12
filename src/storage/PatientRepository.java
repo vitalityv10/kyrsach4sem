@@ -1,18 +1,17 @@
 package storage;
 
 import entities.Persons.Patient;
-import factories.PatientFactory;
+import factories.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class PatientRepository {
     private static PatientRepository instance;
-    private List<Patient> patients;
+    private final List<Patient> patients =  new ArrayList<>();
 
     public PatientRepository() {
-        PatientFactory patientFactory = new PatientFactory();
-        this.patients = PatientInitializer.patientInitializer(patientFactory);
+        AbstractFactory<Patient> patientFactory = new PatientFactory();
+        for (int i = 0; i < 16; i++) this.patients.add(patientFactory.create());
     }
 
     public List<Patient> getAllPatients() {return patients;}
@@ -24,4 +23,5 @@ public class PatientRepository {
     public Patient getPatientById(String id) {
         return patients.stream().filter(p -> p.getID().equals(id)).findFirst().orElse(null);
     }
+
 }

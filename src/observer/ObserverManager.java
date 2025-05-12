@@ -2,8 +2,8 @@ package observer;
 
 import entities.Appointment;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
 public class ObserverManager implements Subject{
   private List<Observer> observers = new ArrayList<>();
   private boolean enabled = true;

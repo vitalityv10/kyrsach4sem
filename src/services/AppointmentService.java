@@ -42,14 +42,5 @@ public class AppointmentService  {
         return true;
     }
 
-    public int getTotalPatientsForMonth(String month) {
-        Set<String> uniquePatientIds = new HashSet<>();
-
-        for (Appointment appointment : appointmentRepository.getAllAppointments()) {
-            if (appointment.getDate().startsWith(month))
-                uniquePatientIds.add(appointment.getPatientId());
-        }
-        return uniquePatientIds.size();
-    }
 }
 

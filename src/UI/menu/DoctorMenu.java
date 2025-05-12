@@ -27,7 +27,7 @@ public class DoctorMenu implements Menu {
             choice = scanner.nextInt();
             switch (choice) {
                 case 1 -> doctorService.viewSchedule();
-                case 2 -> System.out.println("Оновлення історії хвороби...");
+                case 2 -> doctorService.updateMedicalRecord();
                 case 3 -> doctorService.generateReport();
                 case 4 -> System.out.println("Вихід...");
                 default -> System.out.println("Невірний вибір, спробуйте ще раз.");

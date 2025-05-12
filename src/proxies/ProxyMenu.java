@@ -1,9 +1,6 @@
 package proxies;
 
-import UI.menu.AdminMenu;
-import UI.menu.DoctorMenu;
-import UI.menu.Menu;
-import UI.menu.PatientMenu;
+import UI.menu.*;
 
 public class ProxyMenu implements Menu {
     private Menu menu;
