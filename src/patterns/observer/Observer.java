@@ -1,4 +1,4 @@
-package observer;
+package patterns.observer;
 
 import entities.Appointment;
 public interface Observer {

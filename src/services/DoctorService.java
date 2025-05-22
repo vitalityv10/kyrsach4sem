@@ -12,15 +12,15 @@ import static entities.Persons.creation.Diagnosis.DIAGNOSES;
 import static strategies.PatientsByDoctor.getPatientsByDoctor;
 
 public class DoctorService implements DoctorActions {
+    private final String id;
+    public DoctorService(String id){
+        this.id = id;
+    }
     @Override
     public void viewSchedule() {
         System.out.println("Мій розклад: ");
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Введіть ІД лікаря: ");
-        String doctorId = scanner.nextLine().trim();
-
         List<Appointment> appointments = AppointmentRepository.getInstance().getAllAppointments().stream()
-                .filter(appointment -> appointment.getDoctorId().equals(doctorId)).toList();
+                .filter(appointment -> appointment.getDoctorId().equals(id)).toList();
 
         if (appointments.isEmpty()) {
             System.out.println("Немає записів");
@@ -28,13 +28,11 @@ public class DoctorService implements DoctorActions {
         }
 
         System.out.printf("%-15s %-20s %-30s %-20s%n", "ID Запису", "Дата", "Пацієнт", "ІД Пацієнта");
-
         for (Appointment a : appointments) {
             Patient patient = PatientRepository.getInstance().getPatientById(a.getPatientId());
             String fullName = (patient != null)
                     ? patient.getFirstName() + " " + patient.getLastName()
                     : "Пацієнт не знайдений";
-
             System.out.printf("%-15s %-20s %-30s %-20s%n",
                     a.getAppointmentId(), a.getDate(), fullName, a.getPatientId());
         }
@@ -42,11 +40,9 @@ public class DoctorService implements DoctorActions {
 
     @Override
     public void updateMedicalRecord() {
-        System.out.println("Мої пацієнти: ");
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Введіть свій ІД: ");
-        String ID = scanner.nextLine().trim();
-        List<Patient> patients = getPatientsByDoctor(ID);
+        System.out.println("Мої пацієнти: ");
+        List<Patient> patients = getPatientsByDoctor(id);
 
         if (patients.isEmpty()) {
             System.out.println("У вас немає пацієнтів.");return;}
@@ -59,7 +55,7 @@ public class DoctorService implements DoctorActions {
 
         MedicalRecord medicalRecord = patient.getMedicalRecord();
         System.out.println("Оновити діагноз. Доступні варіанти:");
-        DIAGNOSES.getOrDefault(getDoctorById(ID).get().getSpecialization(), List.of())
+        DIAGNOSES.getOrDefault(getDoctorById(id).get().getSpecialization(), List.of())
                 .forEach(System.out::println);
         System.out.print("Введіть назву діагнозу: ");
         String newDiagnosis = scanner.nextLine();
@@ -75,14 +71,9 @@ public class DoctorService implements DoctorActions {
     public void generateReport() {
         ReportService reportService = new ReportService();
         Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Введіть прізвище лікаря: ");
+        System.out.print("Введіть назву звіту: ");
         String lastName = scanner.nextLine().trim();
-
-        System.out.print("Введіть ID лікаря: ");
-        String doctorId = scanner.nextLine().trim();
-
-        reportService.generateDoctorReport(lastName, doctorId);
+        reportService.generateDoctorReport(lastName, id);
     }
 
     @Override
@@ -94,10 +85,7 @@ public class DoctorService implements DoctorActions {
         System.out.println("3. Змінити номер телефону");
         System.out.println("4. Змінити пароль");
 
-        System.out.print("Введіть свій логін/ІД: ");
-        String ID = sc.nextLine();
-
-        Doctor doctor = getDoctorById(ID).get();
+        Doctor doctor = getDoctorById(id).get();
 
         System.out.print("Оберіть опцію (1-4): ");
         int choice = sc.nextInt();

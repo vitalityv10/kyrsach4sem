@@ -24,7 +24,6 @@ public class Appointment implements Cloneable {
                 doctorId, date);
     }
 
-
     @Override
     public Appointment clone() {
         try {

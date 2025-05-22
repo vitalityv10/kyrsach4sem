@@ -4,7 +4,7 @@ import UI.AdminActions;
 import entities.*;
 import entities.Persons.*;
 import entities.Persons.creation.Specialization;
-import factories.*;
+import patterns.factories.*;
 import storage.*;
 import strategies.*;
 

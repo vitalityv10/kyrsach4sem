@@ -1,7 +1,7 @@
-package factories;
+package patterns.factories;
 import entities.Appointment;
 
-public class AppointmentFactory implements AbstractFactory<Appointment>{
+public class AppointmentFactory implements FactoryMethod<Appointment> {
     private static int appointmentCount = 1;
     @Override
     public Appointment create(){return null;}

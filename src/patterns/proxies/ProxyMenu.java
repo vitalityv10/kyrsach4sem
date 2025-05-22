@@ -1,15 +1,15 @@
-package proxies;
+package patterns.proxies;
 
 import UI.menu.*;
 
 public class ProxyMenu implements Menu {
     private Menu menu;
 
-    public ProxyMenu(String role) {
+    public ProxyMenu(String role, String id) {
         switch (role.toLowerCase()) {
             case "admin" -> menu = new AdminMenu();
-            case "doctor" -> menu = new DoctorMenu();
-            case "patient" -> menu = new PatientMenu();
+            case "doctor" -> menu = new DoctorMenu(id);
+            case "patient" -> menu = new PatientMenu(id);
             default -> {
                 System.out.println("Невідома роль. Доступ заборонено.");
                 menu = null;

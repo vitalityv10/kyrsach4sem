@@ -1,4 +1,4 @@
-package factories;
+package patterns.factories;
 
 import entities.MedicalRecord;
 import entities.Persons.creation.Specialization;
@@ -8,7 +8,7 @@ import java.util.Random;
 
 import static entities.Persons.creation.Diagnosis.*;
 
-public class MedicalRecordFactory implements AbstractFactory<MedicalRecord>{
+public class MedicalRecordFactory implements FactoryMethod<MedicalRecord> {
     private static int recordIdCounter = 0;
     private static int doctorIdCounter = 0;
     private final Random random = new Random();

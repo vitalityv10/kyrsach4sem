@@ -1,4 +1,6 @@
-import proxies.ProxyMenu;
+package patterns;
+
+import patterns.proxies.ProxyMenu;
 import storage.*;
 
 import java.util.Scanner;
@@ -9,6 +11,10 @@ public class AuthFacade {
         public boolean handleAuth(String role, Scanner scanner) {
             if (!validateRole(role)) {
                 System.out.println("Невідома роль!");
+                return false;
+            }
+            if (role.equals("exit")) {
+                System.out.println("Вихід із системи...");
                 return false;
             }
             if (role.equals("patient")) {
@@ -28,23 +34,23 @@ public class AuthFacade {
 
             if (role.equals("admin")) {
                 if (!password.equals("admin123")) {
-                    System.out.println("Невірний пароль!");
+                    System.out.println("Неправильний пароль!");
                     return false;
                 }
             } else if ((role.equals("patient") || role.equals("doctor")) &&
                     ((isExistD(userId) || isExistP(userId)) &&
                             (password.equals("password123") || getPasswords().containsValue(password)))) {
             } else {
-                System.out.println("Невірний пароль!");
+                System.out.println("Неправильний пароль!");
                 return false;
             }
 
-            ProxyMenu proxyMenu = new ProxyMenu(role);
+            ProxyMenu proxyMenu = new ProxyMenu(role, userId);
             proxyMenu.handleMenu();
             return true;
         }
     private static boolean validateRole(String role) {
-        return role.equals("admin") || role.equals("doctor") || role.equals("patient");
+        return role.equals("admin") || role.equals("doctor") || role.equals("patient") || role.equals("exit");
     }
     private static boolean isExistD(String ID){
         return DoctorRepository.getInstance().getAllDoctors().stream()

@@ -1,6 +1,6 @@
 package services;
 
-import builder.ReportBuilder;
+import patterns.builder.ReportBuilder;
 import entities.Persons.Patient;
 import storage.*;
 import strategies.PatientsByDoctor;

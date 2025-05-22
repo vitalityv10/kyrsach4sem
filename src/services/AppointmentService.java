@@ -1,7 +1,7 @@
 package services;
 
 import entities.Appointment;
-import observer.ObserverManager;
+import patterns.observer.ObserverManager;
 import storage.AppointmentRepository;
 
 import java.util.*;

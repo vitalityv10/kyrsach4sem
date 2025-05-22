@@ -1,4 +1,4 @@
-package builder;
+package patterns.builder;
 
 import entities.MedicalRecord;
 import entities.Persons.*;

@@ -5,6 +5,8 @@ import services.PatientService;
 import java.util.Scanner;
 
 public class PatientMenu implements Menu {
+    private final String id;
+    public PatientMenu(String id) {this.id = id;}
     @Override
     public void showMenu() {
         System.out.println("=============================================");
@@ -20,7 +22,7 @@ public class PatientMenu implements Menu {
     @Override
     public void handleMenu() {
         Scanner sc = new Scanner(System.in);
-        PatientService patientService = new PatientService();
+        PatientService patientService = new PatientService(id);
         int choice;
         do {
             showMenu();
@@ -32,7 +34,7 @@ public class PatientMenu implements Menu {
                 case 3 -> patientService.viewMedicalRecord();
                 case 4 -> patientService.updateProfile();
                 case 5 -> System.out.println("Вихід...");
-                default -> System.out.println("Невірний вибір, спробуйте ще раз.");
+                default -> System.out.println("Неправильний вибір, спробуйте ще раз.");
             }
         } while (choice != 5);
     }

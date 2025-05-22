@@ -1,4 +1,4 @@
-package State;
+package patterns.State;
 
 public class Completed implements AppointmentState{
     @Override

@@ -45,7 +45,7 @@ public class AdminMenu implements Menu {
                 case 7 -> adminService.allDoctors();
                 case 8 -> adminService.generateReport();
                 case 9 -> System.out.println("Вихід");
-                default -> System.out.println("Невірний вибір, спробуйте ще раз.");
+                default -> System.out.println("Неправильний вибір, спробуйте ще раз.");
             }
         } while (choice != 9);
     }

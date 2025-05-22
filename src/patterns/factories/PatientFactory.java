@@ -1,4 +1,4 @@
-package factories;
+package patterns.factories;
 
 import entities.MedicalRecord;
 import entities.Persons.Patient;
@@ -6,7 +6,7 @@ import entities.Persons.creation.Sex;
 
 import java.util.Random;
 
-public class PatientFactory implements AbstractFactory<Patient> {
+public class PatientFactory implements FactoryMethod<Patient> {
     private static int patientIdCounter = 1;
     private static final String[] FIRST_NAMES = {"Андрій", "Софія", "Михайло", "Ірина", "Дмитро", "Юлія", "Анастасія", "Олексій", "Людмила"};
     private static final String[] LAST_NAMES = {"Ковальчук", "Шевченко", "Гречко", "Кулікова", "Романова", "Шимчук", "Завадський", "Грінченко", "Панасюк", "Чорний"};

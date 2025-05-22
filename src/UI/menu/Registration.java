@@ -1,12 +1,10 @@
 package UI.menu;
 
 import services.AdminService;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class Registration {
-    static Map<String, String> passwords = new HashMap<>();
+    public static Map<String, String> passwords = new HashMap<>();
     public static void registration(){
 
         Scanner scanner = new Scanner(System.in);
@@ -28,5 +26,22 @@ public class Registration {
         passwords.put(ID, password1);
     }
 
+    public static void changePassword(String id) {
+        Scanner sc = new Scanner(System.in);
+        if (!passwords.containsKey(id)) {
+            System.out.println("Користувача з таким ID не знайдено.");
+            return;
+        }
+        System.out.print("Введіть старий пароль: ");
+        String oldPassword = sc.nextLine();
+
+        if (!passwords.get(id).equals(oldPassword)) {
+            System.out.println("Неправильний пароль.");
+            return;
+        }
+        System.out.print("Новий пароль: ");
+        String newPassword = sc.nextLine(); passwords.put(id, newPassword);
+        System.out.println("Пароль успішно змінено.");
+    }
     public static Map<String, String> getPasswords() {return passwords;}
 }

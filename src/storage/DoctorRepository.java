@@ -1,7 +1,7 @@
 package storage;
 
 import entities.Persons.Doctor;
-import factories.*;
+import patterns.factories.*;
 
 import java.util.*;
 
@@ -10,7 +10,7 @@ public class DoctorRepository {
     private List<Doctor> doctors = new ArrayList<>();
 
     public DoctorRepository() {
-        AbstractFactory<Doctor> factory = new DoctorFactory();
+        FactoryMethod<Doctor> factory = new DoctorFactory();
         for (int i = 0; i < 16; i++) this.doctors.add(factory.create());
     }
 

@@ -1,8 +1,8 @@
 package storage;
 
 import entities.Appointment;
-import factories.AppointmentFactory;
-import observer.ObserverManager;
+import patterns.factories.AppointmentFactory;
+import patterns.observer.ObserverManager;
 import services.AppointmentService;
 
 import java.util.*;

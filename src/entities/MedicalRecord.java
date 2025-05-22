@@ -19,12 +19,8 @@ public class MedicalRecord {
 
     @Override
     public String toString() {
-        return "MedicalRecord{" +
-                "recordId='" + recordId + '\'' +
-                ", patientId='" + patientId + '\'' +
-                ", diagnosis='" + diagnosis + '\'' +
-                ", treatment='" + treatment + '\'' +
-                ", doctorIds=" +  doctorId+
-                '}';
+        return String.format("%-15s %-15s %-15s %-20s",
+                recordId, patientId,diagnosis,
+                treatment, doctorId);
     }
 }

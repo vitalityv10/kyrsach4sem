@@ -1,11 +1,11 @@
-package factories;
+package patterns.factories;
 
 import entities.Persons.Doctor;
 import entities.Persons.creation.*;
 
 import java.util.Random;
 
-public class DoctorFactory implements AbstractFactory<Doctor>{
+public class DoctorFactory implements FactoryMethod<Doctor> {
     private static int doctorIdCounter = 1;
     private static final String[] FIRST_NAMES = {"Іван", "Петро", "Марія", "Ольга", "Олександр", "Ганна", "Віталій", "Роман", "Катерина"};
     private static final String[] LAST_NAMES = {"Іванов", "Петров", "Сидоренко", "Коваленко", "Мельник", "Ткаченко", "Гнатюк", "Бондаренко", "Романюк", "Козак"};

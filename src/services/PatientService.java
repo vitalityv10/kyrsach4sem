@@ -1,23 +1,36 @@
 package services;
 
-import State.*;
+import patterns.State.AppointmentContext;
+import patterns.State.Completed;
+import patterns.State.Scheduled;
 import UI.PatientActions;
-import decorator.PatientDecorator;
-import entities.*;
-import entities.Persons.*;
+import UI.menu.Registration;
+import patterns.decorator.PatientDecorator;
+import entities.Appointment;
+import entities.MedicalRecord;
+import entities.Persons.Doctor;
+import entities.Persons.Patient;
 import entities.Persons.creation.Specialization;
-import factories.AppointmentFactory;
-import observer.ObserverManager;
-import storage.*;
-import strategies.*;
+import patterns.factories.AppointmentFactory;
+import patterns.observer.ObserverManager;
+import storage.AppointmentRepository;
+import storage.DoctorRepository;
+import storage.PatientRepository;
+import strategies.DoctorsSelectable;
+import strategies.SelectSpecialization;
+import strategies.SelectionContext;
 
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
+import java.util.Scanner;
 
 import static storage.AppointmentInitializer.getRandomDate;
 import static strategies.DoctorsSelectable.getDoctorsBySpecialization;
 
 public class PatientService implements PatientActions {
-    private final Scanner sc = new Scanner(System.in); // Глобальний сканер
+    private final Scanner sc = new Scanner(System.in);// Глобальний сканер
+    private final String id;
+    public PatientService(String id) {this.id = id;}
     @Override
     public void bookAppointment() {
         System.out.println("Запис на прийом до лікаря");
@@ -30,13 +43,11 @@ public class PatientService implements PatientActions {
 
         AppointmentFactory appointmentFactory = new AppointmentFactory();
 
-        System.out.println("Введіть свій ID: ");
-        String patientID = sc.nextLine();
         System.out.println("Виберіть доступну дату прийому: ");
         for(int i = 0 ; i < 10; i++)  System.out.println(getRandomDate());
 
         String date = sc.nextLine();
-        Appointment appointment = appointmentFactory.create(patientID, doctorToChoice.getID(),date);
+        Appointment appointment = appointmentFactory.create(id, doctorToChoice.getID(),date);
 
         AppointmentService service = new AppointmentService(AppointmentRepository.getInstance(), new ObserverManager());
         service.createAppointment(appointment);
@@ -68,12 +79,10 @@ public class PatientService implements PatientActions {
 
     @Override
     public void viewMedicalRecord() {
-        System.out.print("Введіть свій логін/ІД: ");
-        String ID = sc.nextLine();
-        MedicalRecord medicalRecord = getPatientByID(ID).
+        MedicalRecord medicalRecord = getPatientByID(id).
                 get().getMedicalRecord();
         List<Appointment> appointments = AppointmentRepository.getInstance().getAllAppointments().stream()
-                .filter(appointment -> appointment.getPatientId().equals(ID))
+                .filter(appointment -> appointment.getPatientId().equals(id))
                 .toList();
 
         System.out.printf("%-15s %-20s %-30s %-20s %-15s%n",
@@ -96,11 +105,9 @@ public class PatientService implements PatientActions {
         System.out.println("4. Додати адресу проживання");
         System.out.println("5. Змінити пароль");
 
-        System.out.print("Введіть свій логін/ІД: ");
-        String ID = sc.nextLine();
-          PatientDecorator patientDecorator = null;
-            Patient patient = getPatientByID(ID).get();
-
+          PatientDecorator patientDecorator;
+            Patient patient = getPatientByID(id).get();
+        String address = " ";
             System.out.print("Оберіть опцію (1-5): ");
             int choice = sc.nextInt();
             sc.nextLine();
@@ -116,14 +123,15 @@ public class PatientService implements PatientActions {
                     String newPhone = sc.nextLine();
                     patient.setPhoneNumber(newPhone);}
                 case 4 -> {System.out.print("Введіть адресу : ");
-                    String address = sc.nextLine();
-                    patientDecorator = new PatientDecorator(patient, address);
+                    address = sc.nextLine();
+                   // patientDecorator = new PatientDecorator(patient, address);
                 }
                 case 5 -> {System.out.print("Новий пароль: ");
-                    String newPassword = sc.nextLine();}
+                    Registration.changePassword(id);}
                 default -> {System.out.println("Невірний вибір.");return;}
             }
-            System.out.println("Профіль успішно оновлено: ");
+        patientDecorator = new PatientDecorator(patient, address);
+        System.out.println("Профіль успішно оновлено: ");
             System.out.println(patientDecorator.getInfo());
     }
     private static Optional<Patient> getPatientByID(String ID){

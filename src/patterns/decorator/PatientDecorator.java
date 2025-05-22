@@ -1,8 +1,8 @@
-package decorator;
+package patterns.decorator;
 
 import entities.Persons.Patient;
 
-public class PatientDecorator implements PatientInfo{
+public class PatientDecorator{
     private final Patient patient;
     private final String address;
 
@@ -10,7 +10,6 @@ public class PatientDecorator implements PatientInfo{
         this.patient = patient;
         this.address = address;
     }
-    @Override
     public String getInfo() {
         return patient.toString() + ", Address='" + address + "'";
     }
