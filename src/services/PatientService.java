@@ -4,7 +4,7 @@ import patterns.State.AppointmentContext;
 import patterns.State.Completed;
 import patterns.State.Scheduled;
 import UI.PatientActions;
-import UI.menu.Registration;
+import UI.Registration;
 import patterns.decorator.PatientDecorator;
 import entities.Appointment;
 import entities.MedicalRecord;
@@ -95,7 +95,6 @@ public class PatientService implements PatientActions {
         }
     }
 
-    @Override
     public void updateProfile() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Оновлення профілю: ");

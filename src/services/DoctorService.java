@@ -75,8 +75,6 @@ public class DoctorService implements DoctorActions {
         String lastName = scanner.nextLine().trim();
         reportService.generateDoctorReport(lastName, id);
     }
-
-    @Override
     public void updateProfile() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Оновлення профілю: ");

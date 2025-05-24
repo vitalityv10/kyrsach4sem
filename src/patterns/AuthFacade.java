@@ -5,7 +5,7 @@ import storage.*;
 
 import java.util.Scanner;
 
-import static UI.menu.Registration.*;
+import static UI.Registration.*;
 
 public class AuthFacade {
         public boolean handleAuth(String role, Scanner scanner) {

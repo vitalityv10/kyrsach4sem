@@ -112,11 +112,7 @@ public class AdminService implements AdminActions {
 
     @Override
     public void generateReport() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Введіть потрібну дату (00-00-0000)");
-        String date = sc.nextLine();
-        ReportService  reportService = new ReportService();
-        reportService.generateAdminReport(date);
-        sc.close();}
+        ReportService  reportService = new ReportService(); reportService.generateAdminReport();
+       }
 }
 

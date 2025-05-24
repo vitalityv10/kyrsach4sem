@@ -1,6 +1,6 @@
 package UI;
 
-public interface DoctorActions extends UserActions {
+public interface DoctorActions {
     void viewSchedule();
     void updateMedicalRecord();
     void generateReport();

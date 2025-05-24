@@ -1,4 +1,4 @@
-package UI.menu;
+package UI;
 
 import services.AdminService;
 import java.util.*;

@@ -5,7 +5,6 @@ import services.AdminService;
 import java.util.Scanner;
 
 public class AdminMenu implements Menu {
-    private final Scanner sc = new Scanner(System.in);
     @Override
     public void showMenu() {
         System.out.println("=============================================");
@@ -17,25 +16,20 @@ public class AdminMenu implements Menu {
         System.out.println("5. Переглянути всі записи на прийом         #");
         System.out.println("6. Керування пацієнтами                     #");
         System.out.println("7. Керування лікарями                       #");
-        System.out.println("8. Згенерувати звіт                         #");// 6 керування лікарями// 6 керування лікарями
+        System.out.println("8. Згенерувати звіт                         #");
         System.out.println("9. Вихід                                    #");
         System.out.println("=============================================");
     }
-
     @Override
     public void handleMenu() {
         AdminService adminService = new AdminService();
+        Scanner sc = new Scanner(System.in);
         int choice;
         do {
             showMenu();
-            System.out.println("Виберіть опцію: ");
-            if (!sc.hasNextInt()) {
-                System.out.println("Введення завершено або недопустиме. Вихід.");
-                break;
-            }
+            System.out.print("Ваш вибір ➤ ");
             choice = sc.nextInt();
-            sc.nextLine();
-            switch (choice){
+            switch (choice) {
                 case 1 -> adminService.addDoctor();
                 case 2 -> adminService.addPatient();
                 case 3 -> adminService.removeDoctor();
@@ -50,5 +44,3 @@ public class AdminMenu implements Menu {
         } while (choice != 9);
     }
 }
-
-

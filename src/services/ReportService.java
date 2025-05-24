@@ -15,7 +15,7 @@ public class ReportService {
         this.patientsByDoctor = new PatientsByDoctor();
     }
 
-    public void generateAdminReport(String date) {
+    public void generateAdminReport() {
         String fileName = "admin_report.txt";
         try (FileWriter writer = new FileWriter(fileName)) {
             ReportBuilder builder = new ReportBuilder();
@@ -25,7 +25,7 @@ public class ReportService {
             writer.write(builder.build());
 
             System.out.println("Звіт адміністратора створено у файлі " + fileName);
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.out.println("Помилка запису файлу: " + e.getMessage());}
     }
     public void generateDoctorReport(String doctorName, String doctorId) {

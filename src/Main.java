@@ -26,7 +26,7 @@ public class Main {
             System.out.println("╚══════════════════════════════════════════════╝");
             System.out.print("Ваш вибір ➤ ");
             AuthFacade facade = new AuthFacade();
-            role = scanner.nextLine().toLowerCase();
+            role = scanner.nextLine().toLowerCase().trim();
             if (!role.equals("exit")) {facade.handleAuth(role, scanner);}
         }  while (!role.equals("exit"));
     }
