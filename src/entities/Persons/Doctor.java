@@ -2,7 +2,9 @@ package entities.Persons;
 
 import entities.Persons.creation.*;
 
-public class Doctor extends Human{
+import java.io.Serializable;
+
+public class Doctor extends Human implements Serializable {
     Specialization specialization;
     public Doctor(String ID, String firstName, String lastName, String phoneNumber, Sex sex, Specialization specialization) {
         super(ID, firstName, lastName, phoneNumber, sex);

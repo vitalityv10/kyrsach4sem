@@ -4,6 +4,7 @@ import entities.MedicalRecord;
 import entities.Persons.Patient;
 import entities.Persons.creation.Sex;
 
+import java.util.List;
 import java.util.Random;
 
 public class PatientFactory implements FactoryMethod<Patient> {
@@ -28,6 +29,17 @@ public class PatientFactory implements FactoryMethod<Patient> {
 
         if (medicalRecord == null ) medicalRecord = new MedicalRecordFactory().create(patientId);
         return new Patient(patientId, firstName, lastName, phoneNumber, sex, medicalRecord);
+    }
+    public static void initPatientIdCounter(List<Patient> existingDoctors) {
+        int maxId = 0;
+        for (Patient patient : existingDoctors) {
+            try {
+                String idStr = patient.getID().replace("P", "");
+                int num = Integer.parseInt(idStr);
+                if (num > maxId) maxId = num;
+            } catch (NumberFormatException ignored) {}
+        }
+        patientIdCounter = maxId + 1;
     }
 }
 

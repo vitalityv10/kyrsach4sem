@@ -1,9 +1,13 @@
 package services;
 
 import UI.DoctorActions;
-import entities.*;
-import entities.Persons.*;
-import storage.*;
+import entities.Appointment;
+import entities.MedicalRecord;
+import entities.Persons.Doctor;
+import entities.Persons.Patient;
+import storage.AppointmentRepository;
+import storage.DoctorRepository;
+import storage.PatientRepository;
 import strategies.PatientSelectable;
 
 import java.util.*;
@@ -42,8 +46,14 @@ public class DoctorService implements DoctorActions {
     public void updateMedicalRecord() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Мої пацієнти: ");
-        List<Patient> patients = getPatientsByDoctor(id);
-
+        List<Patient> patients = new ArrayList<>();
+        List<Appointment> appointments = AppointmentRepository.getInstance().getAllAppointments().stream()
+                .filter(appointment -> appointment.getDoctorId().equals(id)).toList();
+        for (Appointment a : appointments){
+            Patient patient1 = PatientRepository.getInstance().getPatientById(a.getPatientId());
+            patients.add(patient1);
+        }
+        patients.addAll(getPatientsByDoctor(id));
         if (patients.isEmpty()) {
             System.out.println("У вас немає пацієнтів.");return;}
 

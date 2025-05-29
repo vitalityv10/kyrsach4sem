@@ -1,4 +1,4 @@
-package patterns.builder;
+package patterns;
 
 import entities.MedicalRecord;
 import entities.Persons.*;
@@ -18,7 +18,10 @@ public class ReportBuilder {
             content.append(doctor.getFirstName())
                     .append(" ").append(doctor.getLastName())
                     .append(" - ").append(doctor.getSpecialization())
-                    .append("\n");}}
+                    .append("\n");
+        }
+    }
+    public String build() {return content.toString();}
 
     public void addPatients(List<Patient> patients) {
         content.append("Список пацієнтів:\n");
@@ -31,8 +34,8 @@ public class ReportBuilder {
                 content.append(patient.getFirstName()).append(" ")
                         .append(patient.getLastName()).append(" - Діагноз: ")
                         .append(diagnosis).append("\n");
-            }}}
-
-    public String build() {return content.toString();}
+            }
+        }
+    }
 }
 

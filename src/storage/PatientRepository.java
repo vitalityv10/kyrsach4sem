@@ -7,11 +7,11 @@ import java.util.*;
 
 public class PatientRepository {
     private static PatientRepository instance;
-    private final List<Patient> patients =  new ArrayList<>();
+    private List<Patient> patients;
 
     public PatientRepository() {
-        FactoryMethod<Patient> patientFactory = new PatientFactory();
-        for (int i = 0; i < 16; i++) this.patients.add(patientFactory.create());
+        patients = PatientStorage.loadPatients();
+        PatientFactory.initPatientIdCounter(patients);
     }
 
     public List<Patient> getAllPatients() {return patients;}
@@ -19,7 +19,7 @@ public class PatientRepository {
         if (instance == null) instance = new PatientRepository();
         return instance;
     }
-    public void addPatient(Patient patient) {patients.add(patient);}
+    public void addPatient(Patient patient) {patients.add(patient); PatientStorage.savePatients(patients);}
     public Patient getPatientById(String id) {
         return patients.stream().filter(p -> p.getID().equals(id)).findFirst().orElse(null);
     }

@@ -5,7 +5,7 @@ import patterns.State.Completed;
 import patterns.State.Scheduled;
 import UI.PatientActions;
 import UI.Registration;
-import patterns.decorator.PatientDecorator;
+import patterns.PatientDecorator;
 import entities.Appointment;
 import entities.MedicalRecord;
 import entities.Persons.Doctor;

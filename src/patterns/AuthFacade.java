@@ -1,6 +1,5 @@
 package patterns;
 
-import patterns.proxies.ProxyMenu;
 import storage.*;
 
 import java.util.Scanner;
@@ -50,7 +49,8 @@ public class AuthFacade {
             return true;
         }
     private static boolean validateRole(String role) {
-        return role.equals("admin") || role.equals("doctor") || role.equals("patient") || role.equals("exit");
+        return role.equals("admin") || role.equals("doctor") || role.equals("patient")
+                || role.equals("exit");
     }
     private static boolean isExistD(String ID){
         return DoctorRepository.getInstance().getAllDoctors().stream()
@@ -61,4 +61,3 @@ public class AuthFacade {
                 .anyMatch(doctor -> doctor.getID().equals(ID));
     }
 }
-

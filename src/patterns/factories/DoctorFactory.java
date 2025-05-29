@@ -1,8 +1,10 @@
 package patterns.factories;
 
 import entities.Persons.Doctor;
-import entities.Persons.creation.*;
+import entities.Persons.creation.Sex;
+import entities.Persons.creation.Specialization;
 
+import java.util.List;
 import java.util.Random;
 
 public class DoctorFactory implements FactoryMethod<Doctor> {
@@ -25,5 +27,16 @@ public class DoctorFactory implements FactoryMethod<Doctor> {
     }
     public Doctor create(String firstName, String lastName, String phoneNumber, Sex sex, Specialization specialization) {
         return new Doctor("D" + (doctorIdCounter++), firstName, lastName, phoneNumber, sex, specialization);
+    }
+    public static void initDoctorIdCounter(List<Doctor> existingDoctors) {
+        int maxId = 0;
+        for (Doctor doctor : existingDoctors) {
+            try {
+                String idStr = doctor.getID().replace("D", "");
+                int num = Integer.parseInt(idStr);
+                if (num > maxId) maxId = num;
+            } catch (NumberFormatException ignored) {}
+        }
+        doctorIdCounter = maxId + 1;
     }
 }

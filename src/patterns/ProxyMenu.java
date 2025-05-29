@@ -1,4 +1,4 @@
-package patterns.proxies;
+package patterns;
 
 import UI.menu.*;
 

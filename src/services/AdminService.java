@@ -1,12 +1,20 @@
 package services;
 
 import UI.AdminActions;
-import entities.*;
-import entities.Persons.*;
+import entities.Appointment;
+import entities.MedicalRecord;
+import entities.Persons.Doctor;
+import entities.Persons.Human;
+import entities.Persons.Patient;
 import entities.Persons.creation.Specialization;
-import patterns.factories.*;
-import storage.*;
-import strategies.*;
+import patterns.factories.DoctorFactory;
+import patterns.factories.MedicalRecordFactory;
+import patterns.factories.PatientFactory;
+import storage.AppointmentRepository;
+import storage.DoctorRepository;
+import storage.PatientRepository;
+import strategies.DoctorRemover;
+import strategies.PatientRemover;
 
 import java.util.List;
 import java.util.Scanner;
@@ -21,7 +29,8 @@ public class AdminService implements AdminActions {
         Human personalInfo = getPersonalInfo();
         Specialization specialization = getSelectedSpecialization();
 
-        Doctor newDoctor = new DoctorFactory().create(personalInfo.getFirstName(), personalInfo.getLastName(),
+        Doctor newDoctor = new DoctorFactory().create(personalInfo.getFirstName(),
+                personalInfo.getLastName(),
                 personalInfo.getPhoneNumber(), personalInfo.getSex(), specialization);
         DoctorRepository.getInstance().addDoctor(newDoctor);
 
@@ -102,6 +111,8 @@ public class AdminService implements AdminActions {
     System.out.printf("%-10s %-15s %-15s %-15s %-10s %-20s%n",
             "ID", "Ім'я", "Прізвище", "Телефон", "Стать", "ID мед. карти");
         PatientRepository.getInstance().getAllPatients().forEach(System.out::println);
+//        List<Patient> patients = PatientRepository.getInstance().getAllPatients();
+//        patients.sort(Comparator.comparing(p -> p.getLastName()));
 }
     @Override
     public void allDoctors() {
@@ -112,7 +123,8 @@ public class AdminService implements AdminActions {
 
     @Override
     public void generateReport() {
-        ReportService  reportService = new ReportService(); reportService.generateAdminReport();
+        ReportService  reportService = new ReportService();
+        reportService.generateAdminReport();
        }
 }
 

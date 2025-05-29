@@ -1,4 +1,4 @@
-package patterns.decorator;
+package patterns;
 
 import entities.Persons.Patient;
 
