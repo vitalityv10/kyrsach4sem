@@ -1,0 +1,170 @@
+[
+  {
+    "specialization": "CARDIOLOGIST",
+    "ID": "D1",
+    "firstName": "Катерина",
+    "lastName": "Гнатюк",
+    "phoneNumber": "380671030174",
+    "sex": "MALE"
+  },
+  {
+    "specialization": "SURGEON",
+    "ID": "D2",
+    "firstName": "Роман",
+    "lastName": "Коваленко",
+    "phoneNumber": "380677480168",
+    "sex": "FEMALE"
+  },
+  {
+    "specialization": "SURGEON",
+    "ID": "D3",
+    "firstName": "Ганна",
+    "lastName": "Гнатюк",
+    "phoneNumber": "380675289623",
+    "sex": "MALE"
+  },
+  {
+    "specialization": "NEUROLOGIST",
+    "ID": "D4",
+    "firstName": "Іван",
+    "lastName": "Козак",
+    "phoneNumber": "380677678863",
+    "sex": "MALE"
+  },
+  {
+    "specialization": "SURGEON",
+    "ID": "D5",
+    "firstName": "Марія",
+    "lastName": "Мельник",
+    "phoneNumber": "380675992534",
+    "sex": "MALE"
+  },
+  {
+    "specialization": "PSYCHIATRIST",
+    "ID": "D6",
+    "firstName": "Ольга",
+    "lastName": "Ткаченко",
+    "phoneNumber": "380672113295",
+    "sex": "MALE"
+  },
+  {
+    "specialization": "SURGEON",
+    "ID": "D7",
+    "firstName": "Іван",
+    "lastName": "Мельник",
+    "phoneNumber": "380678476731",
+    "sex": "MALE"
+  },
+  {
+    "specialization": "PSYCHIATRIST",
+    "ID": "D8",
+    "firstName": "Роман",
+    "lastName": "Романюк",
+    "phoneNumber": "380674430906",
+    "sex": "FEMALE"
+  },
+  {
+    "specialization": "CARDIOLOGIST",
+    "ID": "D9",
+    "firstName": "Катерина",
+    "lastName": "Сидоренко",
+    "phoneNumber": "380677295301",
+    "sex": "FEMALE"
+  },
+  {
+    "specialization": "NEUROLOGIST",
+    "ID": "D10",
+    "firstName": "Роман",
+    "lastName": "Бондаренко",
+    "phoneNumber": "380672799814",
+    "sex": "FEMALE"
+  },
+  {
+    "specialization": "SURGEON",
+    "ID": "D11",
+    "firstName": "Петро",
+    "lastName": "Козак",
+    "phoneNumber": "380673101008",
+    "sex": "FEMALE"
+  },
+  {
+    "specialization": "SURGEON",
+    "ID": "D12",
+    "firstName": "Марія",
+    "lastName": "Бондаренко",
+    "phoneNumber": "380678540448",
+    "sex": "MALE"
+  },
+  {
+    "specialization": "NEUROLOGIST",
+    "ID": "D13",
+    "firstName": "Ольга",
+    "lastName": "Козак",
+    "phoneNumber": "380679761315",
+    "sex": "FEMALE"
+  },
+  {
+    "specialization": "ORTHOPEDIST",
+    "ID": "D14",
+    "firstName": "Ольга",
+    "lastName": "Романюк",
+    "phoneNumber": "380677496861",
+    "sex": "FEMALE"
+  },
+  {
+    "specialization": "CARDIOLOGIST",
+    "ID": "D15",
+    "firstName": "Віталій",
+    "lastName": "Сидоренко",
+    "phoneNumber": "380671444250",
+    "sex": "FEMALE"
+  },
+  {
+    "specialization": "SURGEON",
+    "ID": "D16",
+    "firstName": "Роман",
+    "lastName": "Романюк",
+    "phoneNumber": "380675419402",
+    "sex": "MALE"
+  },
+  {
+    "specialization": "CARDIOLOGIST",
+    "ID": "D17",
+    "firstName": "d5tfuy",
+    "lastName": "6f7",
+    "phoneNumber": "5d6fy",
+    "sex": "MALE"
+  },
+  {
+    "specialization": "OPHTHALMOLOGIST",
+    "ID": "D18",
+    "firstName": "ezsxdcfvg",
+    "lastName": "Kozak",
+    "phoneNumber": "ertfgy",
+    "sex": "MALE"
+  },
+  {
+    "specialization": "OPHTHALMOLOGIST",
+    "ID": "D19",
+    "firstName": "gyref",
+    "lastName": "veybuni",
+    "phoneNumber": "vbuewinj",
+    "sex": "MALE"
+  },
+  {
+    "specialization": "ORTHOPEDIST",
+    "ID": "D20",
+    "firstName": "ufvbienr",
+    "lastName": "vwenione",
+    "phoneNumber": "ervin",
+    "sex": "MALE"
+  },
+  {
+    "specialization": "DERMATOLOGIST",
+    "ID": "D21",
+    "firstName": "21",
+    "lastName": "12",
+    "phoneNumber": "1",
+    "sex": "MALE"
+  }
+]
